@@ -27,4 +27,24 @@ jobs:
           npm i
           npm run build
 
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: build
+          path: ./frontend/dist
+
+      - name: Deploy
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USER_NAME }}
+          key: ${{ secrets.SSH_KEY }}
+          scripts: |
+            sudo su -
+            cd /var/www/mern
+            git pull origin main
+            npm i --prefix frontend
+            npm i --prefix backend
+            pm2 restart all
+
       - run: echo "🍏 This job's status is ${{ job.status }}."
