@@ -40,14 +40,12 @@ jobs:
           username: ${{ secrets.USER_NAME }}
           key: ${{ secrets.SSH_KEY }}
           script: |
-            whoami
-            sudo su -
-            whoami
             cd /var/www/mern
-            git pull origin main
-            npm i --prefix frontend
-            npm run build --prefix frontend
-            npm i --prefix backend
-            pm2 restart all
+            ls -a
+            sudo git pull origin main
+            sudo npm i --prefix frontend
+            sudo npm run build --prefix frontend
+            sudo npm i --prefix backend
+            sudo pm2 restart all
 
       - run: echo "🍏 This job's status is ${{ job.status }}."
