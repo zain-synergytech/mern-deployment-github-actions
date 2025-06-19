@@ -40,7 +40,9 @@ jobs:
           username: ${{ secrets.USER_NAME }}
           key: ${{ secrets.SSH_KEY }}
           script: |
+            whoami
             sudo su -
+            whoami
             cd /var/www/mern
             git pull origin main
             npm i --prefix frontend
