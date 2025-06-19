@@ -44,6 +44,7 @@ jobs:
             cd /var/www/mern
             git pull origin main
             npm i --prefix frontend
+            npm run build --prefix frontend
             npm i --prefix backend
             pm2 restart all
 
