@@ -13,7 +13,7 @@ const UsersList = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(config.apiUrl + "/users")
+    fetch(config.apiUrl + "/api/users")
       .then((res) => res.json())
       .then((data) => {
         setUsers(data);
