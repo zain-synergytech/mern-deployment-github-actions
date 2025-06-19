@@ -8,7 +8,7 @@ const generateUsers = (count = 5) =>
     id: faker.string.uuid(),
     name: faker.person.fullName(),
     email: faker.internet.email(),
-    avatar: faker.image.avatar(),
+    avatar: faker.image.avatarGitHub(),
   }));
 
 router.get('/', (_req, res) => {
