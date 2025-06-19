@@ -8,11 +8,11 @@ const generateUsers = (count = 5) =>
     id: faker.string.uuid(),
     name: faker.person.fullName(),
     email: faker.internet.email(),
-    avatar: faker.image.avatarGitHub(),
+    avatar: faker.image.personPortrait(),
   }));
 
 router.get('/', (_req, res) => {
-  const users = generateUsers(10);
+  const users = generateUsers(20);
   res.status(200).json(users);
 });
 

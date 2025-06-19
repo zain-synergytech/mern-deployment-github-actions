@@ -65,7 +65,7 @@ const UsersList = () => {
 function App() {
   return (
     <div>
-      <h1>Testing GitHub Actions Deployment Pipeline</h1>
+      <h1>GitHub Actions Deployment Pipeline</h1>
       <UsersList />
     </div>
   );
