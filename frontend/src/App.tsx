@@ -29,7 +29,7 @@ const UsersList = () => {
 
   return (
     <div style={{ padding: "1rem" }}>
-      <h2>User List</h2>
+      <h2>Random Users</h2>
       <div
         style={{
           display: "grid",
