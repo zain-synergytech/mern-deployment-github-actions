@@ -1,35 +1,19 @@
 name: Deploy to VPS
 run-name: ${{ github.actor }} initiated deployment pipeline
 
-on: [push, workflow_dispatch]
+on:
+  push:
+    branches: main
+
+  workflow_dispatch:
 
 jobs:
+  build:
+    uses: ./.github/workflows/build.yml
+
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "The job was automatically triggered by a ${{ github.event_name }} event."
-      - run: echo "This job is now running on a ${{ runner.os }}."
-
-      - name: Check out repository code
-        uses: actions/checkout@v4
-
-      - name: Install NodeJs and NPM
-        uses: actions/setup-node@v4
-        with:
-          node-version: "22"
-
-      - name: Build Frontend
-        run: |-
-          cd frontend
-          npm i
-          npm run build
-
-      - name: Upload build artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: build
-          path: ./frontend/dist
-
       - name: Deploy
         uses: appleboy/ssh-action@v1
         with:
@@ -44,5 +28,3 @@ jobs:
             sudo npm run build --prefix frontend
             sudo npm i --prefix backend
             sudo pm2 restart all
-
-      - run: echo "This job's status is ${{ job.status }}."
