@@ -12,7 +12,7 @@ const generateUsers = (count = 5) =>
   }));
 
 router.get('/', (_req, res) => {
-  const users = generateUsers(20);
+  const users = generateUsers(30);
   res.status(200).json(users);
 });
 
